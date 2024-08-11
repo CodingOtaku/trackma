@@ -312,7 +312,7 @@ class Engine:
                     # for later calls.
                     try:
                         self.msg.debug("Importing hook {}...".format(name))
-                        module = loader.find_module(name).load_module(name)
+                        module = loader.find_spec(name).loader.load_module()
                         if hasattr(module, 'init'):
                             module.init(self)
                         self.hooks_available.append(module)
